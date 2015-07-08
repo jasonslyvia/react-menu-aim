@@ -1,0 +1,31 @@
+{
+  "name": "react-menu-aim",
+  "version": "0.0.1",
+  "description": "A React mixin version of Amazon's jQuery-menu-vim plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonslyvia/react-menu-aim.git"
+  },
+  "keywords": [
+    "react",
+    "amazon",
+    "jquery-menu-aim",
+    "menu-aim"
+  ],
+  "author": "jasonslyvia <jasonslyvia@gmail.com> (http://undefinedblog.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasonslyvia/react-menu-aim/issues"
+  },
+  "homepage": "https://github.com/jasonslyvia/react-menu-aim",
+  "dependencies": {
+    "react": "^0.13.x"
+  },
+  "peerDependencies": {
+    "react": "^0.13.x"
+  }
+}

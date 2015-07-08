@@ -87,11 +87,11 @@ function getActivateDealy() {
     y: upperLeft.y
   };
   var lowerLeft = {
-    x: offset.left,
-    y: offset.top - outerHeight(menu)
+    x: menuOffset.left,
+    y: menuOffset.top - outerHeight(menu)
   };
   var lowerRight = {
-    x: offset.left + outerWidth(menu),
+    x: menuOffset.left + outerWidth(menu),
     y: lowerLeft.y
   };
 
@@ -213,12 +213,16 @@ function possiblyActivate(rowIdentifier, handler) {
  * @export
  */
 module.exports = exports = {
+  componentWillMount: function() {
+    this._mouseLocs = [];
+  },
+
   componentDidMount: function() {
-    on(document, 'mousemove.react-menu-aim', this.handleMouseMoveDocument);
+    on(document, 'mousemove', this.handleMouseMoveDocument);
   },
 
   componentWillUnmount: function() {
-    off(document, 'mousemove.react-menu-aim', this.handleMouseMoveDocument);
+    off(document, 'mousemove', this.handleMouseMoveDocument);
   },
 
   handleMouseMoveDocument: function(e) {

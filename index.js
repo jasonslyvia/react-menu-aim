@@ -9,6 +9,7 @@
 var React = require('react');
 var MOUSE_LOCS_TRACKED = 3;   // number of past mouse locations to trackv
 var DELAY = 300;              // ms delay when user appears to be entering submenu
+var TOLERANCE = 75;           // bigger = more forgivey when entering submenu
 
 
 /**
@@ -87,7 +88,7 @@ function getActivateDealy(config) {
 
   var upperLeft = {
     x: menuOffset.left,
-    y: menuOffset.top
+    y: menuOffset.top - (config.tolerance || TOLERANCE)
   };
   var upperRight = {
     x: menuOffset.left + outerWidth(menu),
@@ -95,7 +96,7 @@ function getActivateDealy(config) {
   };
   var lowerLeft = {
     x: menuOffset.left,
-    y: menuOffset.top + outerHeight(menu)
+    y: menuOffset.top + outerHeight(menu) + (config.tolerance || TOLERANCE)
   };
   var lowerRight = {
     x: menuOffset.left + outerWidth(menu),

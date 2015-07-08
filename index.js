@@ -75,6 +75,7 @@ function outerHeight(el) {
  *
  */
 function getActivateDealy(config) {
+  config = config || {};
   var menu = React.findDOMNode(this);
   var menuOffset = offset(menu);
 
@@ -199,7 +200,7 @@ function possiblyActivate(rowIdentifier, handler, config) {
   if (delay) {
     var self = this;
     this.__reactMenuAimTimer = setTimeout(function(){
-      possiblyActivate.call(self, rowIdentifier, handler);
+      possiblyActivate.call(self, rowIdentifier, handler, config);
     }, delay);
   }
   else {

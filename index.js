@@ -77,6 +77,12 @@ function outerHeight(el) {
 function getActivateDealy(config) {
   config = config || {};
   var menu = React.findDOMNode(this);
+
+  // If can't find any DOM node
+  if (!menu || !menu.querySelector) {
+    return 0;
+  }
+  menu = config.menuSelector ? menu.querySelector(config.menuSelector) : menu;
   var menuOffset = offset(menu);
 
   var upperLeft = {

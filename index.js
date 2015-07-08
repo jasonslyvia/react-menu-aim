@@ -6,9 +6,9 @@
  * https://github.com/kamens/jQuery-menu-aim
 */
 
-var React = require('react/addons');
-var MOUSE_LOCS_TRACKED = 3;  // number of past mouse locations to trackv
-var DELAY = 300;       // ms delay when user appears to be entering submenu
+var React = require('react');
+var MOUSE_LOCS_TRACKED = 3;   // number of past mouse locations to trackv
+var DELAY = 300;              // ms delay when user appears to be entering submenu
 
 
 /**
@@ -74,7 +74,7 @@ function outerHeight(el) {
  * Util helpers
  *
  */
-function getActivateDealy() {
+function getActivateDealy(config) {
   var menu = React.findDOMNode(this);
   var menuOffset = offset(menu);
 
@@ -88,7 +88,7 @@ function getActivateDealy() {
   };
   var lowerLeft = {
     x: menuOffset.left,
-    y: menuOffset.top - outerHeight(menu)
+    y: menuOffset.top + outerHeight(menu)
   };
   var lowerRight = {
     x: menuOffset.left + outerWidth(menu),
@@ -154,15 +154,15 @@ function getActivateDealy() {
   // corner to decrease over time, as explained above. If the
   // submenu opens in a different direction, we change our slope
   // expectations.
-  if (this._submenuDirection === 'left') {
+  if (config.submenuDirection === 'left') {
     decreasingCorner = lowerLeft;
     increasingCorner = upperLeft;
   }
-  else if (this._submenuDirection === 'below') {
+  else if (config.submenuDirection === 'below') {
     decreasingCorner = lowerRight;
     increasingCorner = lowerLeft;
   }
-  else if (this._submenuDirection === 'above') {
+  else if (config.submenuDirection === 'above') {
     decreasingCorner = upperLeft;
   }
 
@@ -177,7 +177,7 @@ function getActivateDealy() {
   // new menu row, because user may be moving into submenu.
   if (decreasingSlope < prevDecreasingSlope && increasingSlope > prevIncreasingSlope) {
     this._lastDelayLoc = loc;
-    return DELAY;
+    return config.delay || DELAY;
   }
 
   this._lastDelayLoc = null;
@@ -193,8 +193,8 @@ function activate(rowIdentifier, handler) {
 }
 
 
-function possiblyActivate(rowIdentifier, handler) {
-  var delay = getActivateDealy.call(this);
+function possiblyActivate(rowIdentifier, handler, config) {
+  var delay = getActivateDealy.call(this, config);
 
   if (delay) {
     var self = this;
@@ -213,6 +213,10 @@ function possiblyActivate(rowIdentifier, handler) {
  * @export
  */
 module.exports = exports = {
+  initMenuAim: function(options) {
+    this.__reactMenuAimConfig = options;
+  },
+
   componentWillMount: function() {
     this._mouseLocs = [];
   },
@@ -223,6 +227,11 @@ module.exports = exports = {
 
   componentWillUnmount: function() {
     off(document, 'mousemove', this.handleMouseMoveDocument);
+
+    this._mouseLocs = null;
+
+    clearTimeout(this.__reactMenuAimTimer);
+    this.__reactMenuAimTimer = null;
   },
 
   handleMouseMoveDocument: function(e) {
@@ -263,7 +272,7 @@ module.exports = exports = {
       clearTimeout(this.__reactMenuAimTimer);
     }
 
-    possiblyActivate.call(this, rowIdentifier, handler);
+    possiblyActivate.call(this, rowIdentifier, handler, this.__reactMenuAimConfig);
   }
 };
 

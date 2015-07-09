@@ -7,7 +7,7 @@ A React Mixin makes your menu works as **magical** as Amazon's implementation, t
 
 ## How to use
 
-[Live Demo](http://jasonslvyia.github.io/react-menu-aim/demo/index.html)
+[Live Demo](http://jasonslyvia.github.io/react-menu-aim/demo/index.html)
 
 You can also checkout `./demo` folder find out the simple & stragiht demo usage, or here's a quick look.
 

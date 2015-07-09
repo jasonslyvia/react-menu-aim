@@ -1,10 +1,12 @@
 {
   "name": "react-menu-aim",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "A React mixin version of Amazon's jQuery-menu-vim plugin",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "build": "./node_modules/browserify/bin/cmd.js demo/app.js -d -t babelify -p [minifyify --map bundle.map.json --output demo/bundle.map.json] -o demo/app.bundle.js",
+    "watch": "./node_modules/watchify/bin/cmd.js demo/app.js -t babelify -o demo/app.bundle.js -v -d"
   },
   "repository": {
     "type": "git",
@@ -27,5 +29,11 @@
   },
   "peerDependencies": {
     "react": "^0.13.x"
+  },
+  "devDependencies": {
+    "babelify": "~6.1.2",
+    "browserify": "~10.2.4",
+    "minifyify": "~7.0.2",
+    "watchify": "~3.2.3"
   }
 }

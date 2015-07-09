@@ -1,4 +1,124 @@
 ReactMenuAim
 ==============================================
 
-A React Mixin version of Amazon's jQuery-menu-aim.
+A React Mixin makes your menu works as **magical** as Amazon's implementation, this repo is heavily inspired by [jQuery-menu-aim](https://github.com/kamens/jQuery-menu-aim/).
+
+![ReactMenuAim demo](https://cloud.githubusercontent.com/assets/1336484/8591773/198d1d4a-265d-11e5-94b1-97071a591ab1.gif)
+
+## How to use
+
+[Live Demo](http://jasonslvyia.github.io/react-menu-aim/demo/index.html)
+
+You can also checkout `./demo` folder find out the simple & stragiht demo usage, or here's a quick look.
+
+```
+var React = require('react');
+var ReactMenuAim = require('react-menu-aim');
+
+var Menu = React.createClass({
+  mixins: [ReactMenuAim],
+
+  componentWillMount: function() {
+    // Config ReactMenuAim here
+    this.initMenuAim({
+      submenuDirection: 'right',
+      menuSelector: '.menu'
+    });
+  },
+
+  // This is your true handler when a menu item is going to be active
+  handleSwitchMenuIndex: function(index) {
+    // ...
+  },
+
+  // handleMouseLeaveMenu and handleMouseEnterRow are provided by ReactMenuAim,
+  // you can provided your own handler bound to event handler
+  render: function() {
+    return (
+      <div className="menu-container">
+        <ul className="menu" onMouseLeave={this.handleMouseLeaveMenu}>
+          <li className="menu-item" onMouseEnter={this.handleMouseEnterRow.bind(this, 0, this,handleSwitchMenuIndex)}>Menu Item 1</li>
+          <li className="menu-item" onMouseEnter={this.handleMouseEnterRow.bind(this, 1, this,handleSwitchMenuIndex)}>Menu Item 1</li>
+        </ul>
+      </div>
+    );
+  }
+});
+```
+
+## Event handler
+
+The following event handlers are provided by ReactMenuAim, you can use them like `this.handleMouseLeaveMenu`.
+
+** DO NOT ** call them directly, pass them as event handler in component's `render` method.
+
+### handleMouseLeaveMenu
+
+This event handler should be called when mouse is leaving the menu.
+
+**Arguments**
+
+ 1. handler (*Function*) You can provide your own handler when mouse leave menu
+ 2. e       (*Object*)   React's synthetic event
+
+
+### handleMouseEnterRow
+
+This event handler should be called when mouse is entering a menu item.
+
+**Arguments**
+
+ 1. rowIdentifier (*Any*)   The identifier you provided to identify a row, usually it's row index or something.
+ 2. handler (*Function*)    You can provide your own handler when mouse enter a row
+ 3. e       (*Object*)      React's synthetic event
+
+## Configuration
+
+To configure ReactMenuAim, you should call `this.initMenuAim` in your React component with your options.
+
+```
+  componentWillMount: function() {
+    this.initMenuAim({
+      // options
+    });
+  }
+```
+
+### submenuDirection
+
+Type: string  Default: 'right'
+
+Indicates the direction of submenu.
+
+### menuSelector
+
+Type: string  Default: '*'
+
+Determine the position and offset of menu container. This selector should be constrained on the very exact menu area, not the components container itself.
+
+### delay
+
+Type: number  Default: 300
+
+When user is moving mouse and have a tendency of viewing submenu, how many ms to wait before making next move.
+
+### tolerance
+
+Type: number  Default: 75
+
+The larger, the submenu is more likely to show.
+
+
+## Scripts
+
+```
+$ npm install
+$ npm run build
+$ npm run watch
+```
+
+## License
+
+MIT
+
+

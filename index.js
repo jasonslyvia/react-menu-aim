@@ -75,6 +75,23 @@ function outerHeight(el) {
  * Util helpers
  *
  */
+
+// Consider multiple instance using ReactMenuAim, we just listen mousemove once
+var mousemoveListener = 0;
+var mouseLocs = [];
+
+// Mousemove handler on document
+function handleMouseMoveDocument(e) {
+  mouseLocs.push({
+    x: e.pageX,
+    y: e.pageY
+  });
+
+  if (mouseLocs.length > MOUSE_LOCS_TRACKED) {
+    mouseLocs.shift();
+  }
+}
+
 function getActivateDealy(config) {
   config = config || {};
   var menu = React.findDOMNode(this);
@@ -103,8 +120,8 @@ function getActivateDealy(config) {
     y: lowerLeft.y
   };
 
-  var loc = this._mouseLocs[this._mouseLocs.length - 1];
-  var prevLoc = this._mouseLocs[0];
+  var loc = mouseLocs[mouseLocs.length - 1];
+  var prevLoc = mouseLocs[0];
 
   if (!loc) {
     return 0;
@@ -225,42 +242,31 @@ module.exports = exports = {
     this.__reactMenuAimConfig = options;
   },
 
-  componentWillMount: function() {
-    this._mouseLocs = [];
-  },
-
   componentDidMount: function() {
-    on(document, 'mousemove', this.handleMouseMoveDocument);
+    if (mousemoveListener === 0) {
+      on(document, 'mousemove', handleMouseMoveDocument.bind(this));
+    }
+
+    mousemoveListener += 1;
   },
 
   componentWillUnmount: function() {
-    off(document, 'mousemove', this.handleMouseMoveDocument);
+    mousemoveListener -= 1;
 
-    this._mouseLocs = null;
+    if (mousemoveListener === 0) {
+      off(document, 'mousemove', this.handleMouseMoveDocument);
+      mouseLocs = null;
+    }
 
     clearTimeout(this.__reactMenuAimTimer);
     this.__reactMenuAimTimer = null;
   },
 
-  handleMouseMoveDocument: function(e) {
-    var _mouseLocs = this._mouseLocs || [];
-    _mouseLocs.push({
-      x: e.pageX,
-      y: e.pageY
-    });
-
-    if (_mouseLocs.length > MOUSE_LOCS_TRACKED) {
-      _mouseLocs.shift();
-    }
-
-    this._mouseLocs = _mouseLocs;
-  },
-
   /**
-   * @param  {object}   e     React's synthetic event object
    * @param  {function} handler The true event handler for your app
+   * @param  {object}   e       React's synthetic event object
    */
-  handleMouseLeaveMenu: function(e, handler) {
+  handleMouseLeaveMenu: function(handler, e) {
     if (this.__reactMenuAimTimer) {
       clearTimeout(this.__reactMenuAimTimer);
     }
@@ -283,5 +289,3 @@ module.exports = exports = {
     possiblyActivate.call(this, rowIdentifier, handler, this.__reactMenuAimConfig);
   }
 };
-
-

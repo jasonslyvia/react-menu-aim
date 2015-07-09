@@ -50,7 +50,7 @@ var Menu = React.createClass({
 
 The following event handlers are provided by ReactMenuAim, you can use them like `this.handleMouseLeaveMenu`.
 
-** DO NOT ** call them directly, pass them as event handler in component's `render` method.
+**DO NOT** call them directly, pass them as event handler in component's `render` method.
 
 ### handleMouseLeaveMenu
 

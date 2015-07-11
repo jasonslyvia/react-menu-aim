@@ -3,6 +3,8 @@ ReactMenuAim
 
 A React Mixin makes your menu works as **magical** as Amazon's implementation, this repo is heavily inspired by [jQuery-menu-aim](https://github.com/kamens/jQuery-menu-aim/).
 
+[中文说明](http://undefinedblog.com/react-menu-aim/)
+
 [![Build Status](https://travis-ci.org/jasonslyvia/react-menu-aim.svg)](https://travis-ci.org/jasonslyvia/react-menu-aim)
 [![npm version](https://badge.fury.io/js/react-menu-aim.svg)](http://badge.fury.io/js/react-menu-aim)
 

@@ -3,6 +3,9 @@ ReactMenuAim
 
 A React Mixin makes your menu works as **magical** as Amazon's implementation, this repo is heavily inspired by [jQuery-menu-aim](https://github.com/kamens/jQuery-menu-aim/).
 
+[![Build Status](https://travis-ci.org/jasonslyvia/react-menu-aim.svg)](https://travis-ci.org/jasonslyvia/react-menu-aim)
+[![npm version](https://badge.fury.io/js/react-menu-aim.svg)](http://badge.fury.io/js/react-menu-aim)
+
 ![ReactMenuAim demo](https://cloud.githubusercontent.com/assets/1336484/8591773/198d1d4a-265d-11e5-94b1-97071a591ab1.gif)
 
 ## How to use
@@ -48,7 +51,7 @@ var Menu = React.createClass({
 
 ## Event handler
 
-The following event handlers are provided by ReactMenuAim, you can use them like `this.handleMouseLeaveMenu`.
+The following event handlers are provided by ReactMenuAim.
 
 **DO NOT** call them directly, pass them as event handler in component's `render` method.
 
@@ -68,7 +71,7 @@ This event handler should be called when mouse is entering a menu item.
 
 **Arguments**
 
- 1. rowIdentifier (*Any*)   The identifier you provided to identify a row, usually it's row index or something.
+ 1. rowIdentifier (*Any*)   The identifier you provided to identify a row, usually it's row index or something, will be passed to your handler when a menu is going to be activated.
  2. handler (*Function*)    You can provide your own handler when mouse enter a row
  3. e       (*Object*)      React's synthetic event
 
@@ -94,7 +97,7 @@ Indicates the direction of submenu.
 
 Type: string  Default: '*'
 
-Determine the position and offset of menu container. This selector should be constrained on the very exact menu area, not the components container itself.
+Determine the position and offset of menu container. This selector should be constrained on the very exact menu area(which we are switching), not including submenu area.
 
 ### delay
 
@@ -113,6 +116,7 @@ The larger, the submenu is more likely to show.
 
 ```
 $ npm install
+$ npm run test
 $ npm run build
 $ npm run watch
 ```

@@ -47,5 +47,12 @@
   },
   "plugins": [
       "eslint-plugin-react"
-  ]
+  ],
+  "globals": {
+    "chai": false,
+    "describe": false,
+    "it": false,
+    "beforeEach": false,
+    "afterEach": false
+  }
 }

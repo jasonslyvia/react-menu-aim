@@ -4,9 +4,9 @@
   "description": "A React mixin version of Amazon's jQuery-menu-vim plugin",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
-    "build": "./node_modules/browserify/bin/cmd.js demo/app.js -d -t babelify -p [minifyify --map bundle.map.json --output demo/bundle.map.json] -o demo/app.bundle.js",
-    "watch": "./node_modules/watchify/bin/cmd.js demo/app.js -t babelify -o demo/app.bundle.js -v -d"
+    "test": "./node_modules/karma/bin/karma start test/karma.conf.js",
+    "build": "./node_modules/browserify/bin/cmd.js demo/js/app.js -d -t babelify -p [minifyify --no-map] -o demo/js/app.bundle.js",
+    "watch": "./node_modules/watchify/bin/cmd.js demo/js/app.js -t babelify -o demo/js/app.bundle.js -v -d"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,18 @@
   "devDependencies": {
     "babelify": "~6.1.2",
     "browserify": "~10.2.4",
+    "browserify-istanbul": "^0.2.1",
+    "chai": "^3.0.0",
+    "chai-spies": "^0.6.0",
+    "karma": "^0.12.37",
+    "karma-browserify": "^4.2.1",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-coverage": "^0.4.2",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-mocha": "^0.2.0",
     "minifyify": "~7.0.2",
+    "mocha": "^2.2.5",
     "watchify": "~3.2.3"
   }
 }

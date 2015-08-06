@@ -242,9 +242,17 @@ module.exports = exports = {
     this.__reactMenuAimConfig = options;
   },
 
+  __getMouseMoveDocumentHandler: function() {
+    if (!this.__mouseMoveDocumentHandler) {
+      this.__mouseMoveDocumentHandler = handleMouseMoveDocument.bind(this);
+    }
+
+    return this.__mouseMoveDocumentHandler;
+  },
+
   componentDidMount: function() {
     if (mousemoveListener === 0) {
-      on(document, 'mousemove', handleMouseMoveDocument.bind(this));
+      on(document, 'mousemove', this.__getMouseMoveDocumentHandler());
     }
 
     mousemoveListener += 1;
@@ -254,12 +262,13 @@ module.exports = exports = {
     mousemoveListener -= 1;
 
     if (mousemoveListener === 0) {
-      off(document, 'mousemove', this.handleMouseMoveDocument);
-      mouseLocs = null;
+      off(document, 'mousemove', this.__getMouseMoveDocumentHandler());
+      mouseLocs = [];
     }
 
     clearTimeout(this.__reactMenuAimTimer);
     this.__reactMenuAimTimer = null;
+    this.__mouseMoveDocumentHandler = null;
   },
 
   /**

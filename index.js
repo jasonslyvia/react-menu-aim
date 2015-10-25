@@ -92,7 +92,7 @@ function handleMouseMoveDocument(e) {
   }
 }
 
-function getActivateDealy(config) {
+function getActivateDelay(config) {
   config = config || {};
   var menu = React.findDOMNode(this);
 
@@ -219,7 +219,7 @@ function activate(rowIdentifier, handler) {
 
 
 function possiblyActivate(rowIdentifier, handler, config) {
-  var delay = getActivateDealy.call(this, config);
+  var delay = getActivateDelay.call(this, config);
 
   if (delay) {
     var self = this;

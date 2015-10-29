@@ -36,8 +36,8 @@ var Menu = React.createClass({
     // ...
   },
 
-  // handleMouseLeaveMenu and handleMouseEnterRow are provided by ReactMenuAim,
-  // you can provided your own handler bound to event handler
+  // `handleMouseLeaveMenu` and `handleMouseEnterRow` are provided by ReactMenuAim,
+  // you can provide your own handler bound to them
   render: function() {
     return (
       <div className="menu-container">

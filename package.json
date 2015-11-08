@@ -1,7 +1,7 @@
 {
   "name": "react-menu-aim",
   "version": "0.1.1",
-  "description": "A React mixin version of Amazon's jQuery-menu-vim plugin",
+  "description": "A React mixin version of Amazon's jQuery-menu-aim plugin",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start test/karma.conf.js",
@@ -24,11 +24,8 @@
     "url": "https://github.com/jasonslyvia/react-menu-aim/issues"
   },
   "homepage": "https://github.com/jasonslyvia/react-menu-aim",
-  "dependencies": {
-    "react": "^0.13.x"
-  },
   "peerDependencies": {
-    "react": "^0.13.x"
+    "react-dom": "^0.14.2"
   },
   "devDependencies": {
     "babelify": "~6.1.2",
@@ -45,6 +42,8 @@
     "karma-mocha": "^0.2.0",
     "minifyify": "~7.0.2",
     "mocha": "^2.2.5",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
     "watchify": "~3.2.3"
   }
 }

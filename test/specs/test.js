@@ -1,7 +1,8 @@
 /*eslint no-unused-expressions:0 */
 'use strict';
 
-import React from 'react/addons';
+import ReactDOM from 'react-dom';
+import React from 'react';
 import spies from 'chai-spies';
 import Menu from '../../demo/js/Menu.js';
 import menuData from '../../demo/js/menuData';
@@ -30,13 +31,13 @@ describe('ReactMenuAim', () => {
   let node;
 
   beforeEach(() => {
-    node = React.render(<Menu menuData={menuData} />, document.body);
+    node = ReactDOM.render(<Menu menuData={menuData} />, document.body);
   });
 
   afterEach(() => {
-      console.log('after');
+    console.log('after');
 
-    React.unmountComponentAtNode(document.body);
+    ReactDOM.unmountComponentAtNode(document.body);
     node = null;
   });
 

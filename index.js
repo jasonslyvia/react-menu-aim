@@ -6,7 +6,7 @@
  * https://github.com/kamens/jQuery-menu-aim
 */
 
-var React = require('react');
+var ReactDOM = require('react-dom');
 var MOUSE_LOCS_TRACKED = 3;   // number of past mouse locations to trackv
 var DELAY = 300;              // ms delay when user appears to be entering submenu
 var TOLERANCE = 75;           // bigger = more forgivey when entering submenu
@@ -94,7 +94,7 @@ function handleMouseMoveDocument(e) {
 
 function getActivateDelay(config) {
   config = config || {};
-  var menu = React.findDOMNode(this);
+  var menu = ReactDOM.findDOMNode(this);
 
   // If can't find any DOM node
   if (!menu || !menu.querySelector) {

@@ -10,6 +10,8 @@ A React Mixin makes your menu works as **magical** as Amazon's implementation, t
 
 ![ReactMenuAim demo](https://cloud.githubusercontent.com/assets/1336484/8591773/198d1d4a-265d-11e5-94b1-97071a591ab1.gif)
 
+**If you tend to support React v0.13, please use react-menu-aim@0.1.1 which is the latest compatible version.**
+
 ## How to use
 
 [Live Demo](http://jasonslyvia.github.io/react-menu-aim/demo/index.html)

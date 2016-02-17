@@ -38,14 +38,14 @@ var Menu = React.createClass({
     // ...
   },
 
-  // `handleMouseLeaveMenu` and `handleMouseEnterRow` are provided by ReactMenuAim,
+  // `this.handleMouseLeaveMenu` and `this.handleMouseEnterRow` are provided by ReactMenuAim,
   // you can provide your own handler bound to them
   render: function() {
     return (
       <div className="menu-container">
         <ul className="menu" onMouseLeave={this.handleMouseLeaveMenu}>
-          <li className="menu-item" onMouseEnter={this.handleMouseEnterRow.bind(this, 0, this,handleSwitchMenuIndex)}>Menu Item 1</li>
-          <li className="menu-item" onMouseEnter={this.handleMouseEnterRow.bind(this, 1, this,handleSwitchMenuIndex)}>Menu Item 1</li>
+          <li className="menu-item" onMouseEnter={this.handleMouseEnterRow.bind(this, 0, this.handleSwitchMenuIndex)}>Menu Item 1</li>
+          <li className="menu-item" onMouseEnter={this.handleMouseEnterRow.bind(this, 1, this.handleSwitchMenuIndex)}>Menu Item 2</li>
         </ul>
       </div>
     );

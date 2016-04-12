@@ -1,6 +1,6 @@
 {
   "name": "react-menu-aim",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React mixin version of Amazon's jQuery-menu-aim plugin",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/jasonslyvia/react-menu-aim",
   "peerDependencies": {
-    "react-dom": "^0.14.2"
+    "react-dom": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
     "babelify": "~6.1.2",

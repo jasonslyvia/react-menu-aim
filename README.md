@@ -18,7 +18,7 @@ A React Mixin makes your menu works as **magical** as Amazon's implementation, t
 
 You can also checkout `./demo` folder find out the simple & stragiht demo usage, or here's a quick look.
 
-```
+```javascript
 var React = require('react');
 var ReactMenuAim = require('react-menu-aim');
 
@@ -83,7 +83,7 @@ This event handler should be called when mouse is entering a menu item.
 
 To configure ReactMenuAim, you should call `this.initMenuAim` in your React component with your options.
 
-```
+```javascript
   componentWillMount: function() {
     this.initMenuAim({
       // options

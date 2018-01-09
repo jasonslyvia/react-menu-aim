@@ -2,10 +2,9 @@
 
 var React = require('react');
 var ReactMenuAim = require('../../index');
+var createReactClass = require('create-react-class');
 
-
-
-var Menu = React.createClass({
+var Menu = createReactClass({
   mixins: [ReactMenuAim],
 
   getDefaultProps: function() {

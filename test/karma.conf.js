@@ -14,6 +14,14 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['mocha', 'chai', 'browserify'],
 
+    plugins: [
+      'karma-browserify', 
+      'karma-chai', 
+      'karma-mocha',
+      'karma-coverage',
+      'karma-firefox-launcher'
+    ],
+
     browserify: {
       debug: true,
       transform: [

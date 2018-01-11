@@ -1,6 +1,6 @@
 {
   "name": "react-menu-aim",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A React mixin version of Amazon's jQuery-menu-aim plugin",
   "main": "index.js",
   "scripts": {

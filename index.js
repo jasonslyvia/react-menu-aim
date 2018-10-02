@@ -7,9 +7,9 @@
 */
 
 var ReactDOM = require('react-dom');
-var MOUSE_LOCS_TRACKED = 3;   // number of past mouse locations to trackv
+var MOUSE_LOCS_TRACKED = 3;   // number of past mouse locations to track
 var DELAY = 300;              // ms delay when user appears to be entering submenu
-var TOLERANCE = 75;           // bigger = more forgivey when entering submenu
+var TOLERANCE = 75;           // bigger = more forgiving when entering submenu
 
 
 /**
